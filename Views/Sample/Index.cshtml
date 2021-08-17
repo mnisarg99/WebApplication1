@@ -1,0 +1,137 @@
+﻿@model WebApplication1.ViewModel.EmployeeAddEditViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Create", "Sample"))
+{
+    @Html.AntiForgeryToken()
+
+    <h2>Employee Details</h2>
+
+   
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.Name)
+        @Html.TextBoxFor(m => m.Employee.Name)
+        @Html.TextBoxFor(m => m.Employee.Name)
+        @Html.ValidationMessageFor(m => m.Employee.Name, "", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.City)
+        @Html.DropDownListFor(m => m.Employee.City, new SelectList(Model.Cities, "Id", "Name"), "Select a city", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.WorkingCompany)
+        @Html.DropDownListFor(m => m.Employee.WorkingCompany, new SelectList(Model.companies, "Id", "Name"), "Select a company", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Employee.WorkingCompany, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.PayrollComp)
+        @Html.DropDownListFor(m => m.Employee.PayrollComp, new SelectList(Model.PayrollCompany, "Id", "Name"), "Select a company", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Employee.PayrollComp, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.EmpStatus)
+        @Html.DropDownListFor(m => m.Employee.EmpStatus, new SelectList(Model.Status, "Id", "Name"), "Select a status", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Employee.EmpStatus, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.Gender)
+        @Html.RadioButtonFor(m => m.Employee.Gender, "Male") Male
+        @Html.RadioButtonFor(m => m.Employee.Gender, "Female") Female
+        @Html.ValidationMessageFor(m => m.Employee.Gender, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.EmpType)
+        @Html.DropDownListFor(m => m.Employee.EmpType, new SelectList(Model.Type, "Id", "Name"), "Select Employee Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Employee.EmpType, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.SSN)
+        @Html.TextBoxFor(m => m.Employee.SSN, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Employee.SSN, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.Date_of_Birth)
+        @Html.EditorFor(m => m.Employee.Date_of_Birth, "0:dd/MM/YYYY }", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Employee.Date_of_Birth, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.BatchId)
+        @Html.DropDownListFor(m => m.Employee.BatchId, new SelectList(Model.BatchIds, "Id", "Name"), "Select a batchid", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Employee.BatchId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.Department)
+        @foreach (var item in Model.Departments)
+        {
+
+            <div>
+                <input Id="chk@(item.Id)"
+                       data-val-required="The isActive field is required."
+                       value="@item.Id"
+                       name="isActive"
+                       type="checkbox" />
+                @item.Name <br />
+            </div>
+        }
+        @Html.ValidationMessageFor(m => m.Employee.Department, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.PersonalEmailId)
+        @Html.TextBoxFor(m => m.Employee.PersonalEmailId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Employee.PersonalEmailId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.OfficialEmailId)
+        @Html.TextBoxFor(m => m.Employee.OfficialEmailId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Employee.OfficialEmailId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.Date_of_Hire)
+        @Html.EditorFor(m => m.Employee.Date_of_Hire, "0:dd/MM/YYYY }", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Employee.Date_of_Hire, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.HRRepresentative)
+        @Html.DropDownListFor(m => m.Employee.HRRepresentative, new SelectList(Model.HR, "Id", "Name"), "Select hr", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Employee.HRRepresentative, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.ActualRecruiter)
+        @Html.DropDownListFor(m => m.Employee.ActualRecruiter, new SelectList(Model.Recruiters, "Id", "Name"), "Select recruiter", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Employee.ActualRecruiter, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.WorkingLocation)
+        @Html.DropDownListFor(m => m.Employee.WorkingLocation, new SelectList(Model.Locations, "Id", "Name"), "Select location", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Employee.WorkingLocation, "", new { @class = "text-danger" })
+    </div>
+
+
+    <button class="btn btn-primary">Save</button>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/custom-validator")
+}

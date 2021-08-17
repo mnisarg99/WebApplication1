@@ -1,0 +1,19 @@
+﻿@model WebApplication4.Models.EmployeeAddEditViewModel
+@{ ViewBag.Title = "Index"; }
+
+
+<h2>Nisarg</h2>
+
+
+
+@using (Html.BeginForm())
+
+
+{
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Employee.Status)
+    @Html.DropDownListFor(m => m.Employee.Status, new SelectList(Model.StatusList, "KeyId", "KeyName"), "Select a Type", new { @class = "form-group" })
+
+</div>
+
